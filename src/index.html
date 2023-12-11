@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive comments section</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <!--  message-wrapper is the object contains comment with its replies -->
+      <div class="message-wrapper">
+        <div class="comment">
+          <div class="row2">
+            <div class="upvote">
+              <button class="inc">
+                <img src="images/icon-plus.svg" alt="" />
+              </button>
+              <span class="score">12</span>
+              <button class="dec">
+                <img src="images/icon-minus.svg" alt="" />
+              </button>
+            </div>
+            <button class="btn btn-reply show-mobile">
+              <img src="images/icon-reply.svg" alt="" />
+              <span>reply</span>
+            </button>
+          </div>
+          <div class="col-2">
+            <div class="row">
+              <div class="metadata">
+                <figure>
+                  <img
+                    src="images/avatars/image-amyrobson.png"
+                    alt=""
+                    class="avatar"
+                  />
+                  <figcaption class="username">amyrobson</figcaption>
+                </figure>
+                <span class="created-at">1 month ago</span>
+              </div>
+              <button class="btn btn-reply show-desktop">
+                <img src="images/icon-reply.svg" alt="" />
+                <span>reply</span>
+              </button>
+            </div>
+            <p class="content">
+              Woah, your project looks awesome! How long have you been coding
+              for? I'm still new, but think I want to dive into React as well
+              soon. Perhaps you can give me an insight on where I can learn
+              React? Thanks!
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
