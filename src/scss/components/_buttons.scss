@@ -1,0 +1,22 @@
+.btn-style {
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+.btn-style span {
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 700;
+}
+/* general rules */
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.btn-send {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 700;
+}

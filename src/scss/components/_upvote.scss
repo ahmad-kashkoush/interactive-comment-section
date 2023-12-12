@@ -1,0 +1,27 @@
+.message-wrapper .upvote {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--Light-gray);
+  height: fit-content;
+  padding: 10px;
+  gap: 1rem;
+  border-radius: 5px;
+  justify-content: center;
+}
+@media (max-width: 600px) {
+  .message-wrapper .upvote {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.message-wrapper .upvote button.inc,
+.message-wrapper .upvote button.dec {
+  cursor: pointer;
+}
+.message-wrapper .upvote button.dec {
+}
+.message-wrapper .upvote .score {
+  color: var(--Moderate-blue);
+  font-weight: 500;
+}

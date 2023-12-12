@@ -1,0 +1,16 @@
+.draft textarea {
+  resize: none;
+  display: block;
+  width: 100%;
+  height: 86px;
+  font-weight: 500;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border: 1px solid #d0d4da;
+  border-radius: inherit;
+}
+.draft .row {
+  display: flex;
+  align-items: center;
+}

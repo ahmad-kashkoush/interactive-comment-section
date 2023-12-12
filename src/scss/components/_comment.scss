@@ -1,0 +1,17 @@
+/* !comment */
+.comment {
+  max-width: 100%;
+  display: flex;
+  gap: 1rem;
+  background: var(--White);
+  padding: 1rem;
+  border-radius: 5px;
+}
+@media (max-width: 600px) {
+  .comment {
+    flex-direction: column-reverse;
+  }
+}
+.draft.comment {
+  display: block;
+}

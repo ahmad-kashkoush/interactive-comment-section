@@ -9,11 +9,11 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./images/favicon-32x32.png"
+      href="./../images/favicon-32x32.png"
     />
 
     <title>Frontend Mentor | Interactive comments section</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./scss/main.scss" />
   </head>
   <body>
     <main>
@@ -23,15 +23,15 @@
           <div class="row2">
             <div class="upvote">
               <button class="inc">
-                <img src="images/icon-plus.svg" alt="" />
+                <img src="./../images/icon-plus.svg" alt="" />
               </button>
               <span class="score">12</span>
               <button class="dec">
-                <img src="images/icon-minus.svg" alt="" />
+                <img src="./../images/icon-minus.svg" alt="" />
               </button>
             </div>
-            <button class="btn btn-reply show-mobile">
-              <img src="images/icon-reply.svg" alt="" />
+            <button class="btn btn-style c-primary show-mobile">
+              <img src="./../images/icon-reply.svg" alt="" />
               <span>reply</span>
             </button>
           </div>
@@ -40,7 +40,7 @@
               <div class="metadata">
                 <figure>
                   <img
-                    src="images/avatars/image-amyrobson.png"
+                    src="./../images/avatars/image-amyrobson.png"
                     alt=""
                     class="avatar"
                   />
@@ -48,8 +48,8 @@
                 </figure>
                 <span class="created-at">1 month ago</span>
               </div>
-              <button class="btn btn-reply show-desktop">
-                <img src="images/icon-reply.svg" alt="" />
+              <button class="btn btn-style c-primary show-desktop">
+                <img src="./../images/icon-reply.svg" alt="" />
                 <span>reply</span>
               </button>
             </div>
@@ -59,6 +59,74 @@
               soon. Perhaps you can give me an insight on where I can learn
               React? Thanks!
             </p>
+          </div>
+        </div>
+        <div class="replies" style="--replies-number: 1">
+          <div class="comment comment-me">
+            <div class="row2">
+              <div class="upvote">
+                <button class="inc">
+                  <img src="./../images/icon-plus.svg" alt="" />
+                </button>
+                <span class="score">12</span>
+                <button class="dec">
+                  <img src="./../images/icon-minus.svg" alt="" />
+                </button>
+              </div>
+              <div class="btns-me show-mobile">
+                <button class="btn c-primary btn-style">
+                  <img src="./../images/icon-edit.svg" alt="" />
+                  <span>edit</span>
+                </button>
+                <button class="btn c-red btn-style">
+                  <img src="./../images/icon-delete.svg" alt="" />
+                  <span>delete</span>
+                </button>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="row">
+                <div class="metadata">
+                  <figure>
+                    <img
+                      src="./../images/avatars/image-amyrobson.png"
+                      alt=""
+                      class="avatar"
+                    />
+                    <figcaption class="username">amyrobson</figcaption>
+                  </figure>
+                  <span class="created-at">1 month ago</span>
+                </div>
+
+                <div class="btns-me show-desktop">
+                  <button class="btn c-primary btn-style">
+                    <img src="./../images/icon-edit.svg" alt="" />
+                    <span>edit</span>
+                  </button>
+                  <button class="btn c-red btn-style">
+                    <img src="./../images/icon-delete.svg" alt="" />
+                    <span>delete</span>
+                  </button>
+                </div>
+              </div>
+              <p class="content">
+                Woah, your project looks awesome! How long have you been coding
+                for? I'm still new, but think I want to dive into React as well
+                soon. Perhaps you can give me an insight on where I can learn
+                React? Thanks!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="draft comment">
+          <textarea placeholder="Add a comment..."></textarea>
+          <div class="row">
+            <img
+              src="./../images/avatars/image-juliusomo.png"
+              class="avatar"
+              alt=""
+            />
+            <button class="btn btn-send bg-primary">send</button>
           </div>
         </div>
       </div>

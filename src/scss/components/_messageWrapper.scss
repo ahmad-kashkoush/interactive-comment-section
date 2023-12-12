@@ -1,0 +1,15 @@
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.message-wrapper .row {
+  display: flex;
+  justify-content: space-between;
+}
+/* ! metadata  */
+.message-wrapper .row2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

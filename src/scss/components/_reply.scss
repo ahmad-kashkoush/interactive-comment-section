@@ -1,0 +1,18 @@
+.replies {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 1rem;
+}
+.replies::before {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background-color: var(--Grayish-Blue);
+  margin-left: 10px;
+  margin-right: 5px;
+  opacity: 0.2;
+  grid-row: span var(--replies-number);
+}
+.replies .comment {
+  grid-column-start: 2;
+}

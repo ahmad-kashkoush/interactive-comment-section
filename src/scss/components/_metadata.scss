@@ -1,0 +1,36 @@
+.message-wrapper .row .metadata {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.message-wrapper .row figure {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+}
+.avatar {
+  width: 35px;
+}
+.message-wrapper .row figure .username {
+  font-weight: 500;
+  color: var(--Dark-blue);
+}
+.message-wrapper .row .created-at {
+  color: var(--Grayish-Blue);
+}
+.message-wrapper .comment.comment-me .row figure .username::after {
+  content: "You";
+  margin-left: 5px;
+  padding: 1px 5px;
+  font-size: 14px;
+}
+
+.content {
+  margin-top: 1rem;
+  color: var(--Grayish-Blue);
+  line-height: 1.5;
+}
+
+.btns-me {
+  gap: 1rem;
+}
