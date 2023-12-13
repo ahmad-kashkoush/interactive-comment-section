@@ -2,7 +2,7 @@
   "name": "interactive-comments-section-main",
   "version": "1.0.0",
   "description": "![Design preview for the Interactive comments section coding challenge](./design/desktop-preview.jpg)",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html"
@@ -13,5 +13,9 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
     "sass": "^1.69.5"
+  },
+  "dependencies": {
+    "assets": "^3.0.1",
+    "parcel-plugin-static-files-copy": "^2.6.0"
   }
 }
