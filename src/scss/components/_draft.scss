@@ -1,3 +1,6 @@
+.draft {
+  margin-top: 1rem;
+}
 .draft textarea {
   resize: none;
   display: block;
@@ -13,4 +16,5 @@
 .draft .row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
