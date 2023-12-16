@@ -78,8 +78,12 @@ const addReply2 = function (addToEle = document) {
 
                 // console.log(ele.closest('.message-wrapper'));
                 const insertionEle = ele.closest('.message-wrapper').querySelector('.replies');
+                const idd = +ele.closest('.message-wrapper').querySelector('.comment').dataset.id;
+                const comment = state.idToEle.get(idd);
+                insertionEle.setAttribute('style', `--replies-number: ${comment.replies.length}`);
                 insertionEle.insertAdjacentHTML('beforeend', markup);
                 myAddedEle = insertionEle.querySelector(`div[data-id="${obj.id}"]`);
+
 
             }
             // Add Events to new added Element
