@@ -1,7 +1,7 @@
 .draft {
   margin-top: 1rem;
 }
-.draft textarea {
+textarea {
   resize: none;
   display: block;
   width: 100%;
@@ -12,6 +12,7 @@
   border: none;
   border: 1px solid #d0d4da;
   border-radius: inherit;
+  overflow-wrap: wrap;
 }
 .draft .row {
   display: flex;

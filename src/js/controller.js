@@ -1,19 +1,39 @@
-import { increaseScore, decreaseScore, state } from "./model";
+import {
+    increaseScore,
+    decreaseScore,
+    state,
+    addReply,
+    generateReplyObject,
+    deleteFromState,
+    addComment,
+    updateContent
+} from "./model";
 import {
     draft as Draft,
-    messageWrapper as MessageWrapper
+    messageWrapper as MessageWrapper,
+    comment2 as Comment,
+    editDraft
 } from "./UI";
 
 // Configurations
-
+const lastDraft = document.querySelector('main >.draft');
+const insertComment = function (id) {
+    lastDraft.insertAdjacentHTML("beforebegin", MessageWrapper.generateMarkup(id));
+}
 const renderComments = function () {
     state.comments.forEach(comment => {
-        document.querySelector(".draft").insertAdjacentHTML("beforebegin", MessageWrapper.generateMarkup(comment.id));
+        insertComment(comment.id);
     })
 
 }
+const addEventsToEle = function (ele) {
+    addUpdateScoreHandlers(ele);
+    addReply2(ele);
+    deleteComment(ele);
+}
+
 // init is the runner of application
-const addUpdateScoreHandlers = function () {
+const addUpdateScoreHandlers = function (addToEle = document) {
     const handler = function (e, update) {
         e.preventDefault();
         const ele = e.target.closest('button');
@@ -22,12 +42,12 @@ const addUpdateScoreHandlers = function () {
         const id = container.dataset.id;
         container.querySelector('.score').textContent = `${update(+id)}`;
     }
-    document.querySelectorAll(".inc").forEach(btn => {
+    addToEle.querySelectorAll(".inc").forEach(btn => {
         btn.addEventListener("click", function (e) {
             handler(e, increaseScore);
         })
     })
-    document.querySelectorAll(".dec").forEach(btn => {
+    addToEle.querySelectorAll(".dec").forEach(btn => {
         btn.addEventListener("click", function (e) {
             handler(e, decreaseScore);
         })
@@ -35,24 +55,97 @@ const addUpdateScoreHandlers = function () {
 }
 
 // add reply
-const generateReply = function () {
-    document.querySelectorAll('.btn-reply').forEach(reply => {
-        reply.addEventListener('click', function (e) {
-            const ele = e.target.closest('.comment');
-            if (!ele) return;
-            const id = +ele.dataset.id;
-            document.querySelectorAll('.draft').forEach(draft => draft.remove())
 
-            const markup = Draft.generateMarkup();
-            ele.insertAdjacentHTML('afterend', markup);
+const addReply2 = function (addToEle = document) {
 
+    addToEle.querySelectorAll('.draft').forEach(draft => {
+        draft.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const ele = e.target.closest('.draft');
+            const repliedToId = +ele.dataset.repliedToId;
+            const repliedToComment = state.idToEle.get(repliedToId);
+            let myAddedEle;
+            if (!repliedToComment) {
+                const obj = generateReplyObject(ele, -1);
+                addComment(obj);
+                insertComment(obj.id);
+
+                myAddedEle = document.querySelector(`div[data-id="${obj.id}"]`);
+            } else {
+                const obj = generateReplyObject(ele, repliedToId);
+                addReply(repliedToId, obj);
+                const markup = Comment.generateMarkup(obj.id);
+
+                // console.log(ele.closest('.message-wrapper'));
+                const insertionEle = ele.closest('.message-wrapper').querySelector('.replies');
+                insertionEle.insertAdjacentHTML('beforeend', markup);
+                myAddedEle = insertionEle.querySelector(`div[data-id="${obj.id}"]`);
+
+            }
+            // Add Events to new added Element
+            deleteComment(myAddedEle);
+            editComment(myAddedEle);
+            addUpdateScoreHandlers(myAddedEle);
+            addToEle.querySelectorAll('.message-wrapper .draft').forEach(draft => draft.remove())
         })
     })
 }
 
-const init = function () {
+const openReplyDraft = function (addToEle = document) {
+    addToEle.querySelectorAll('.btn-reply').forEach(reply => {
+        reply.addEventListener('click', function (e) {
+            const ele = e.target.closest('.comment');
+            if (!ele) return;
+            const id = +ele.dataset.id;
+            document.querySelectorAll('.message-wrapper .draft').forEach(draft => draft.remove())
+
+            const markup = Draft.generateMarkup(-1, id);
+            ele.insertAdjacentHTML('afterend', markup);
+            addReply2();
+        })
+    });
+
+}
+
+const deleteComment = function (addToEle = document) {
+    addToEle.querySelectorAll('.btn-delete').forEach(deleteBtn => {
+        deleteBtn.addEventListener('click', function (e) {
+            const ele = e.target.closest('.comment');
+            const id = +ele.dataset.id;
+            deleteFromState(id);
+            ele.remove();
+        })
+    })
+}
+
+
+const editComment = function (addToEle = document) {
+    addToEle.querySelectorAll('.btn-edit').forEach(editBtn => {
+        editBtn.addEventListener('click', function (e) {
+            const ele = e.target.closest('.comment');
+            const id = +ele.dataset.id;
+            ele.innerHTML = editDraft.generateMarkup(id);
+            ele.querySelector('.btn-update').addEventListener('click', function (e2) {
+                e.preventDefault();
+                const newContent = ele.querySelector('textarea').value;
+                updateContent(id, newContent);
+                ele.innerHTML = Comment.generateMarkup(id, true);
+
+            })
+        })
+    })
+
+}
+const init = async function () {
+
     renderComments();
     addUpdateScoreHandlers();
-    generateReply();
+    openReplyDraft();
+    deleteComment();
+    editComment();
+    addReply2();
+
+    // edit();
+
 }
 init();

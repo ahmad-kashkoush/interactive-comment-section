@@ -29,8 +29,14 @@
   margin-top: 1rem;
   color: var(--Grayish-Blue);
   line-height: 1.5;
+  overflow-wrap: break-word;
 }
 
 .btns-me {
   gap: 1rem;
+}
+
+.col-2 {
+  width: 100%;
+  max-width: 100%;
 }
